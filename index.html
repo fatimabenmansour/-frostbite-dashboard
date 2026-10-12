@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reorder Batch Summary</title>
+<style>
+:root {
+  --bg: #fcfcfb; --card: #ffffff; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+  --line: rgba(11,11,11,0.10); --grid: #e1e0d9; --axis: #c3c2b7; --bar: #2a78d6; --threshold: #d03b3b;
+  --reorder-bg: #fdeeee; --reorder-ink: #8f2424; --reorder-edge: #d03b3b;
+  --hold-bg: #e9f6e9; --hold-ink: #1f6b1f; --hold-edge: #0ca30c;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141413; --card: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --line: rgba(255,255,255,0.10); --grid: #2c2c2a; --axis: #383835; --bar: #3987e5; --threshold: #e66767;
+    --reorder-bg: #3a1c1c; --reorder-ink: #f4b4b4; --reorder-edge: #e66767;
+    --hold-bg: #17301a; --hold-ink: #a9dfa9; --hold-edge: #3fbf3f;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 880px; margin: 0 auto; padding: 32px 16px 48px; }
+h1 { font-size: 24px; font-weight: 600; margin: 0 0 4px; }
+h2 { font-size: 17px; font-weight: 600; margin: 0 0 12px; }
+.lede { color: var(--ink-2); margin: 0 0 24px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+.kpi { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; }
+.kpi .label { font-size: 13px; color: var(--ink-2); }
+.kpi .value { font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums; }
+section { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 14px; min-width: 600px; }
+th { text-align: left; font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .03em; padding: 8px; border-bottom: 1px solid var(--axis); }
+td { padding: 10px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th.n, td.n { text-align: right; }
+tr.reorder td { background: var(--reorder-bg); color: var(--reorder-ink); }
+tr.reorder td:first-child { box-shadow: inset 4px 0 0 var(--reorder-edge); }
+tr.hold td { background: var(--hold-bg); color: var(--hold-ink); }
+tr.hold td:first-child { box-shadow: inset 4px 0 0 var(--hold-edge); }
+.badge { font-weight: 600; white-space: nowrap; }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--ink-2); margin-top: 12px; }
+.sw { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 6px; }
+.charts { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.charts section { margin: 0; }
+svg { width: 100%; height: auto; display: block; }
+svg .grid { stroke: var(--grid); stroke-width: 1; }
+svg .axis { stroke: var(--axis); stroke-width: 1; }
+svg .bar { fill: var(--bar); }
+svg .bar:hover { opacity: .85; }
+svg .threshold { stroke: var(--threshold); stroke-width: 2; stroke-dasharray: 6 4; }
+svg text { font-family: inherit; font-variant-numeric: tabular-nums; }
+svg .tick { fill: var(--muted); font-size: 12px; }
+svg .val { fill: var(--ink); font-size: 13px; font-weight: 600; }
+svg .cat { fill: var(--ink-2); font-size: 13px; }
+svg .sub { fill: var(--muted); font-size: 12px; }
+svg .thlabel { fill: var(--threshold); font-size: 12px; font-weight: 600; }
+footer { color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Reorder batch summary</h1>
+  <p class="lede">Weekly demand = forecast &divide; 4.33. Reorder when weeks of supply falls below 4 weeks
+  (3-week lead time + 1-week safety buffer); order enough to restock to 8 weeks' supply.</p>
+
+  <div class="kpis">
+    <div class="kpi"><div class="label">Rounds evaluated</div><div class="value">3</div></div>
+    <div class="kpi"><div class="label">Rounds needing a reorder</div><div class="value">2</div></div>
+    <div class="kpi"><div class="label">Total units to order</div><div class="value">2,258</div></div>
+  </div>
+
+  <section>
+    <h2>Decisions by round</h2>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Round</th><th>Month</th><th class="n">Forecast</th><th class="n">Inventory</th>
+      <th class="n">Weekly demand</th><th class="n">Weeks of supply</th><th>Decision</th><th class="n">Order qty</th></tr></thead>
+      <tbody>
+      <tr class="hold"><td>Round A</td><td>July</td><td class="n">1,544</td><td class="n">1,450</td><td class="n">356.58</td><td class="n">4.07</td><td><span class="badge">&#10003; HOLD</span></td><td class="n">0</td></tr>
+<tr class="reorder"><td>Round B</td><td>October</td><td class="n">1,046</td><td class="n">700</td><td class="n">241.57</td><td class="n">2.90</td><td><span class="badge">&#9650; REORDER NOW</span></td><td class="n">1,233</td></tr>
+<tr class="reorder"><td>Round C</td><td>January</td><td class="n">890</td><td class="n">620</td><td class="n">205.54</td><td class="n">3.02</td><td><span class="badge">&#9650; REORDER NOW</span></td><td class="n">1,025</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="legend">
+      <span><span class="sw" style="background: var(--reorder-edge)"></span>REORDER NOW (below 4 weeks)</span>
+      <span><span class="sw" style="background: var(--hold-edge)"></span>HOLD (4 weeks or more)</span>
+    </div>
+  </section>
+
+  <div class="charts">
+    <section>
+      <h2>Weeks of supply vs. 4-week threshold</h2>
+      <svg viewBox="0 0 640 280" role="img" aria-label="Weeks of supply by round against the 4-week reorder threshold">
+<line class="grid" x1="56" x2="624" y1="236.0" y2="236.0"/>
+<text class="tick" x="48" y="240.0" text-anchor="end">0</text>
+<line class="grid" x1="56" x2="624" y1="193.6" y2="193.6"/>
+<text class="tick" x="48" y="197.6" text-anchor="end">1</text>
+<line class="grid" x1="56" x2="624" y1="151.2" y2="151.2"/>
+<text class="tick" x="48" y="155.2" text-anchor="end">2</text>
+<line class="grid" x1="56" x2="624" y1="108.8" y2="108.8"/>
+<text class="tick" x="48" y="112.8" text-anchor="end">3</text>
+<line class="grid" x1="56" x2="624" y1="66.4" y2="66.4"/>
+<text class="tick" x="48" y="70.4" text-anchor="end">4</text>
+<line class="grid" x1="56" x2="624" y1="24.0" y2="24.0"/>
+<text class="tick" x="48" y="28.0" text-anchor="end">5</text>
+<path class="bar" d="M118.7,236.0 V67.6 Q118.7,63.6 122.7,63.6 H178.7 Q182.7,63.6 182.7,67.6 V236.0 Z"><title>Round A (July): 4.07 wks - HOLD</title></path>
+<text class="val" x="150.7" y="55.6" text-anchor="middle">4.07 wks</text>
+<text class="cat" x="150.7" y="256" text-anchor="middle">Round A</text>
+<text class="sub" x="150.7" y="272" text-anchor="middle">July</text>
+<path class="bar" d="M308.0,236.0 V117.1 Q308.0,113.1 312.0,113.1 H368.0 Q372.0,113.1 372.0,117.1 V236.0 Z"><title>Round B (October): 2.90 wks - REORDER NOW</title></path>
+<text class="val" x="340.0" y="105.1" text-anchor="middle">2.90 wks</text>
+<text class="cat" x="340.0" y="256" text-anchor="middle">Round B</text>
+<text class="sub" x="340.0" y="272" text-anchor="middle">October</text>
+<path class="bar" d="M497.3,236.0 V112.1 Q497.3,108.1 501.3,108.1 H557.3 Q561.3,108.1 561.3,112.1 V236.0 Z"><title>Round C (January): 3.02 wks - REORDER NOW</title></path>
+<text class="val" x="529.3" y="100.1" text-anchor="middle">3.02 wks</text>
+<text class="cat" x="529.3" y="256" text-anchor="middle">Round C</text>
+<text class="sub" x="529.3" y="272" text-anchor="middle">January</text>
+<line class="axis" x1="56" x2="624" y1="236.0" y2="236.0"/>
+<line class="threshold" x1="56" x2="624" y1="66.4" y2="66.4"/>
+<text class="thlabel" x="620" y="60.4" text-anchor="end">Reorder threshold: 4 weeks</text>
+</svg>
+    </section>
+    <section>
+      <h2>Order quantity by round</h2>
+      <svg viewBox="0 0 640 280" role="img" aria-label="Order quantity by round">
+<line class="grid" x1="56" x2="624" y1="236.0" y2="236.0"/>
+<text class="tick" x="48" y="240.0" text-anchor="end">0</text>
+<line class="grid" x1="56" x2="624" y1="165.3" y2="165.3"/>
+<text class="tick" x="48" y="169.3" text-anchor="end">500</text>
+<line class="grid" x1="56" x2="624" y1="94.7" y2="94.7"/>
+<text class="tick" x="48" y="98.7" text-anchor="end">1,000</text>
+<line class="grid" x1="56" x2="624" y1="24.0" y2="24.0"/>
+<text class="tick" x="48" y="28.0" text-anchor="end">1,500</text>
+<text class="val" x="150.7" y="228.0" text-anchor="middle">0 (hold)</text>
+<text class="cat" x="150.7" y="256" text-anchor="middle">Round A</text>
+<text class="sub" x="150.7" y="272" text-anchor="middle">July</text>
+<path class="bar" d="M308.0,236.0 V65.7 Q308.0,61.7 312.0,61.7 H368.0 Q372.0,61.7 372.0,65.7 V236.0 Z"><title>Round B (October): 1,233 units - REORDER NOW</title></path>
+<text class="val" x="340.0" y="53.7" text-anchor="middle">1,233 units</text>
+<text class="cat" x="340.0" y="256" text-anchor="middle">Round B</text>
+<text class="sub" x="340.0" y="272" text-anchor="middle">October</text>
+<path class="bar" d="M497.3,236.0 V95.1 Q497.3,91.1 501.3,91.1 H557.3 Q561.3,91.1 561.3,95.1 V236.0 Z"><title>Round C (January): 1,025 units - REORDER NOW</title></path>
+<text class="val" x="529.3" y="83.1" text-anchor="middle">1,025 units</text>
+<text class="cat" x="529.3" y="256" text-anchor="middle">Round C</text>
+<text class="sub" x="529.3" y="272" text-anchor="middle">January</text>
+<line class="axis" x1="56" x2="624" y1="236.0" y2="236.0"/>
+</svg>
+    </section>
+  </div>
+
+  <footer><p>Generated by reorder_tool.py from round_A.txt, round_B.txt, round_C.txt.</p></footer>
+</main>
+</body>
+</html>
