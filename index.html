@@ -66,9 +66,9 @@ footer { color: var(--muted); font-size: 13px; }
   (3-week lead time + 1-week safety buffer); order enough to restock to 8 weeks' supply.</p>
 
   <div class="kpis">
-    <div class="kpi"><div class="label">Rounds evaluated</div><div class="value">3</div></div>
-    <div class="kpi"><div class="label">Rounds needing a reorder</div><div class="value">2</div></div>
-    <div class="kpi"><div class="label">Total units to order</div><div class="value">2,258</div></div>
+    <div class="kpi"><div class="label">Rounds evaluated</div><div class="value">5</div></div>
+    <div class="kpi"><div class="label">Rounds needing a reorder</div><div class="value">3</div></div>
+    <div class="kpi"><div class="label">Total units to order</div><div class="value">4,630</div></div>
   </div>
 
   <section>
@@ -81,6 +81,8 @@ footer { color: var(--muted); font-size: 13px; }
       <tr class="hold"><td>Round A</td><td>July</td><td class="n">1,544</td><td class="n">1,450</td><td class="n">356.58</td><td class="n">4.07</td><td><span class="badge">&#10003; HOLD</span></td><td class="n">0</td></tr>
 <tr class="reorder"><td>Round B</td><td>October</td><td class="n">1,046</td><td class="n">700</td><td class="n">241.57</td><td class="n">2.90</td><td><span class="badge">&#9650; REORDER NOW</span></td><td class="n">1,233</td></tr>
 <tr class="reorder"><td>Round C</td><td>January</td><td class="n">890</td><td class="n">620</td><td class="n">205.54</td><td class="n">3.02</td><td><span class="badge">&#9650; REORDER NOW</span></td><td class="n">1,025</td></tr>
+<tr class="reorder"><td>Round D</td><td>February</td><td class="n">1,500</td><td class="n">400</td><td class="n">346.42</td><td class="n">1.15</td><td><span class="badge">&#9650; REORDER NOW</span></td><td class="n">2,372</td></tr>
+<tr class="hold"><td>Round E</td><td>March</td><td class="n">1,300</td><td class="n">1,350</td><td class="n">300.23</td><td class="n">4.50</td><td><span class="badge">&#10003; HOLD</span></td><td class="n">0</td></tr>
       </tbody>
     </table>
     </div>
@@ -96,31 +98,41 @@ footer { color: var(--muted); font-size: 13px; }
       <svg viewBox="0 0 640 280" role="img" aria-label="Weeks of supply by round against the 4-week reorder threshold">
 <line class="grid" x1="56" x2="624" y1="236.0" y2="236.0"/>
 <text class="tick" x="48" y="240.0" text-anchor="end">0</text>
-<line class="grid" x1="56" x2="624" y1="193.6" y2="193.6"/>
-<text class="tick" x="48" y="197.6" text-anchor="end">1</text>
-<line class="grid" x1="56" x2="624" y1="151.2" y2="151.2"/>
-<text class="tick" x="48" y="155.2" text-anchor="end">2</text>
-<line class="grid" x1="56" x2="624" y1="108.8" y2="108.8"/>
-<text class="tick" x="48" y="112.8" text-anchor="end">3</text>
-<line class="grid" x1="56" x2="624" y1="66.4" y2="66.4"/>
-<text class="tick" x="48" y="70.4" text-anchor="end">4</text>
+<line class="grid" x1="56" x2="624" y1="200.7" y2="200.7"/>
+<text class="tick" x="48" y="204.7" text-anchor="end">1</text>
+<line class="grid" x1="56" x2="624" y1="165.3" y2="165.3"/>
+<text class="tick" x="48" y="169.3" text-anchor="end">2</text>
+<line class="grid" x1="56" x2="624" y1="130.0" y2="130.0"/>
+<text class="tick" x="48" y="134.0" text-anchor="end">3</text>
+<line class="grid" x1="56" x2="624" y1="94.7" y2="94.7"/>
+<text class="tick" x="48" y="98.7" text-anchor="end">4</text>
+<line class="grid" x1="56" x2="624" y1="59.3" y2="59.3"/>
+<text class="tick" x="48" y="63.3" text-anchor="end">5</text>
 <line class="grid" x1="56" x2="624" y1="24.0" y2="24.0"/>
-<text class="tick" x="48" y="28.0" text-anchor="end">5</text>
-<path class="bar" d="M118.7,236.0 V67.6 Q118.7,63.6 122.7,63.6 H178.7 Q182.7,63.6 182.7,67.6 V236.0 Z"><title>Round A (July): 4.07 wks - HOLD</title></path>
-<text class="val" x="150.7" y="55.6" text-anchor="middle">4.07 wks</text>
-<text class="cat" x="150.7" y="256" text-anchor="middle">Round A</text>
-<text class="sub" x="150.7" y="272" text-anchor="middle">July</text>
-<path class="bar" d="M308.0,236.0 V117.1 Q308.0,113.1 312.0,113.1 H368.0 Q372.0,113.1 372.0,117.1 V236.0 Z"><title>Round B (October): 2.90 wks - REORDER NOW</title></path>
-<text class="val" x="340.0" y="105.1" text-anchor="middle">2.90 wks</text>
-<text class="cat" x="340.0" y="256" text-anchor="middle">Round B</text>
-<text class="sub" x="340.0" y="272" text-anchor="middle">October</text>
-<path class="bar" d="M497.3,236.0 V112.1 Q497.3,108.1 501.3,108.1 H557.3 Q561.3,108.1 561.3,112.1 V236.0 Z"><title>Round C (January): 3.02 wks - REORDER NOW</title></path>
-<text class="val" x="529.3" y="100.1" text-anchor="middle">3.02 wks</text>
-<text class="cat" x="529.3" y="256" text-anchor="middle">Round C</text>
-<text class="sub" x="529.3" y="272" text-anchor="middle">January</text>
+<text class="tick" x="48" y="28.0" text-anchor="end">6</text>
+<path class="bar" d="M84.4,236.0 V96.3 Q84.4,92.3 88.4,92.3 H137.2 Q141.2,92.3 141.2,96.3 V236.0 Z"><title>Round A (July): 4.07 wks - HOLD</title></path>
+<text class="val" x="112.8" y="84.3" text-anchor="middle">4.07 wks</text>
+<text class="cat" x="112.8" y="256" text-anchor="middle">Round A</text>
+<text class="sub" x="112.8" y="272" text-anchor="middle">July</text>
+<path class="bar" d="M198.0,236.0 V137.6 Q198.0,133.6 202.0,133.6 H250.8 Q254.8,133.6 254.8,137.6 V236.0 Z"><title>Round B (October): 2.90 wks - REORDER NOW</title></path>
+<text class="val" x="226.4" y="125.6" text-anchor="middle">2.90 wks</text>
+<text class="cat" x="226.4" y="256" text-anchor="middle">Round B</text>
+<text class="sub" x="226.4" y="272" text-anchor="middle">October</text>
+<path class="bar" d="M311.6,236.0 V133.4 Q311.6,129.4 315.6,129.4 H364.4 Q368.4,129.4 368.4,133.4 V236.0 Z"><title>Round C (January): 3.02 wks - REORDER NOW</title></path>
+<text class="val" x="340.0" y="121.4" text-anchor="middle">3.02 wks</text>
+<text class="cat" x="340.0" y="256" text-anchor="middle">Round C</text>
+<text class="sub" x="340.0" y="272" text-anchor="middle">January</text>
+<path class="bar" d="M425.2,236.0 V199.2 Q425.2,195.2 429.2,195.2 H478.0 Q482.0,195.2 482.0,199.2 V236.0 Z"><title>Round D (February): 1.15 wks - REORDER NOW</title></path>
+<text class="val" x="453.6" y="187.2" text-anchor="middle">1.15 wks</text>
+<text class="cat" x="453.6" y="256" text-anchor="middle">Round D</text>
+<text class="sub" x="453.6" y="272" text-anchor="middle">February</text>
+<path class="bar" d="M538.8,236.0 V81.1 Q538.8,77.1 542.8,77.1 H591.6 Q595.6,77.1 595.6,81.1 V236.0 Z"><title>Round E (March): 4.50 wks - HOLD</title></path>
+<text class="val" x="567.2" y="69.1" text-anchor="middle">4.50 wks</text>
+<text class="cat" x="567.2" y="256" text-anchor="middle">Round E</text>
+<text class="sub" x="567.2" y="272" text-anchor="middle">March</text>
 <line class="axis" x1="56" x2="624" y1="236.0" y2="236.0"/>
-<line class="threshold" x1="56" x2="624" y1="66.4" y2="66.4"/>
-<text class="thlabel" x="620" y="60.4" text-anchor="end">Reorder threshold: 4 weeks</text>
+<line class="threshold" x1="56" x2="624" y1="94.7" y2="94.7"/>
+<text class="thlabel" x="620" y="88.7" text-anchor="end">Reorder threshold: 4 weeks</text>
 </svg>
     </section>
     <section>
@@ -128,29 +140,42 @@ footer { color: var(--muted); font-size: 13px; }
       <svg viewBox="0 0 640 280" role="img" aria-label="Order quantity by round">
 <line class="grid" x1="56" x2="624" y1="236.0" y2="236.0"/>
 <text class="tick" x="48" y="240.0" text-anchor="end">0</text>
+<line class="grid" x1="56" x2="624" y1="200.7" y2="200.7"/>
+<text class="tick" x="48" y="204.7" text-anchor="end">500</text>
 <line class="grid" x1="56" x2="624" y1="165.3" y2="165.3"/>
-<text class="tick" x="48" y="169.3" text-anchor="end">500</text>
+<text class="tick" x="48" y="169.3" text-anchor="end">1,000</text>
+<line class="grid" x1="56" x2="624" y1="130.0" y2="130.0"/>
+<text class="tick" x="48" y="134.0" text-anchor="end">1,500</text>
 <line class="grid" x1="56" x2="624" y1="94.7" y2="94.7"/>
-<text class="tick" x="48" y="98.7" text-anchor="end">1,000</text>
+<text class="tick" x="48" y="98.7" text-anchor="end">2,000</text>
+<line class="grid" x1="56" x2="624" y1="59.3" y2="59.3"/>
+<text class="tick" x="48" y="63.3" text-anchor="end">2,500</text>
 <line class="grid" x1="56" x2="624" y1="24.0" y2="24.0"/>
-<text class="tick" x="48" y="28.0" text-anchor="end">1,500</text>
-<text class="val" x="150.7" y="228.0" text-anchor="middle">0 (hold)</text>
-<text class="cat" x="150.7" y="256" text-anchor="middle">Round A</text>
-<text class="sub" x="150.7" y="272" text-anchor="middle">July</text>
-<path class="bar" d="M308.0,236.0 V65.7 Q308.0,61.7 312.0,61.7 H368.0 Q372.0,61.7 372.0,65.7 V236.0 Z"><title>Round B (October): 1,233 units - REORDER NOW</title></path>
-<text class="val" x="340.0" y="53.7" text-anchor="middle">1,233 units</text>
-<text class="cat" x="340.0" y="256" text-anchor="middle">Round B</text>
-<text class="sub" x="340.0" y="272" text-anchor="middle">October</text>
-<path class="bar" d="M497.3,236.0 V95.1 Q497.3,91.1 501.3,91.1 H557.3 Q561.3,91.1 561.3,95.1 V236.0 Z"><title>Round C (January): 1,025 units - REORDER NOW</title></path>
-<text class="val" x="529.3" y="83.1" text-anchor="middle">1,025 units</text>
-<text class="cat" x="529.3" y="256" text-anchor="middle">Round C</text>
-<text class="sub" x="529.3" y="272" text-anchor="middle">January</text>
+<text class="tick" x="48" y="28.0" text-anchor="end">3,000</text>
+<text class="val" x="112.8" y="228.0" text-anchor="middle">0 (hold)</text>
+<text class="cat" x="112.8" y="256" text-anchor="middle">Round A</text>
+<text class="sub" x="112.8" y="272" text-anchor="middle">July</text>
+<path class="bar" d="M198.0,236.0 V152.9 Q198.0,148.9 202.0,148.9 H250.8 Q254.8,148.9 254.8,152.9 V236.0 Z"><title>Round B (October): 1,233 units - REORDER NOW</title></path>
+<text class="val" x="226.4" y="140.9" text-anchor="middle">1,233 units</text>
+<text class="cat" x="226.4" y="256" text-anchor="middle">Round B</text>
+<text class="sub" x="226.4" y="272" text-anchor="middle">October</text>
+<path class="bar" d="M311.6,236.0 V167.6 Q311.6,163.6 315.6,163.6 H364.4 Q368.4,163.6 368.4,167.6 V236.0 Z"><title>Round C (January): 1,025 units - REORDER NOW</title></path>
+<text class="val" x="340.0" y="155.6" text-anchor="middle">1,025 units</text>
+<text class="cat" x="340.0" y="256" text-anchor="middle">Round C</text>
+<text class="sub" x="340.0" y="272" text-anchor="middle">January</text>
+<path class="bar" d="M425.2,236.0 V72.4 Q425.2,68.4 429.2,68.4 H478.0 Q482.0,68.4 482.0,72.4 V236.0 Z"><title>Round D (February): 2,372 units - REORDER NOW</title></path>
+<text class="val" x="453.6" y="60.4" text-anchor="middle">2,372 units</text>
+<text class="cat" x="453.6" y="256" text-anchor="middle">Round D</text>
+<text class="sub" x="453.6" y="272" text-anchor="middle">February</text>
+<text class="val" x="567.2" y="228.0" text-anchor="middle">0 (hold)</text>
+<text class="cat" x="567.2" y="256" text-anchor="middle">Round E</text>
+<text class="sub" x="567.2" y="272" text-anchor="middle">March</text>
 <line class="axis" x1="56" x2="624" y1="236.0" y2="236.0"/>
 </svg>
     </section>
   </div>
 
-  <footer><p>Generated by reorder_tool.py from round_A.txt, round_B.txt, round_C.txt.</p></footer>
+  <footer><p>Generated by reorder_tool.py from rounds_summary_data.txt.</p></footer>
 </main>
 </body>
 </html>
